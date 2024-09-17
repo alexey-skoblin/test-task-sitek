@@ -56,8 +56,13 @@ internal static class Program
 
             value.Add(address);
         }
-
-        IOutput output = new FileOutput();
+        
+        foreach (var (key, value) in dictionary) {
+            value.Sort();
+        }
+        
+        string heading = $"Отчет по добавленным объектам за {DateTime.Now:dd.MM.yyyy}";
+        IOutput output = new TxtFileOutput(heading);
         output.Output(dictionary);
     }
 }

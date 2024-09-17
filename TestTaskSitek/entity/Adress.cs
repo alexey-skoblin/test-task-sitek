@@ -4,7 +4,7 @@ using TestTaskSitek.converter;
 namespace TestTaskSitek.entity;
 
 [XmlRoot("OBJECT")]
-public class Address
+public class Address : IComparable<Address>
 {
     [XmlAttribute("ID")] public int Id { get; set; }
 
@@ -70,5 +70,12 @@ public class Address
     {
         get => IsActive ? 1 : 0;
         set => IsActive = value == 1;
+    }
+
+    public int CompareTo(Address? other)
+    {
+        if (ReferenceEquals(this, other)) return 0;
+        if (other is null) return 1;
+        return string.Compare(Name, other.Name, StringComparison.Ordinal);
     }
 }

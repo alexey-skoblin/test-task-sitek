@@ -2,7 +2,10 @@ namespace TestTaskSitek.output;
 
 public class HttpSender : ISender
 {
-    private readonly HttpClient _httpClient = new();
+    private readonly HttpClient _httpClient = new()
+    {
+        DefaultRequestHeaders = { ConnectionClose = true }
+    };
 
     public string Send(string url)
     {

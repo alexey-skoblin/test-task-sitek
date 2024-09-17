@@ -4,7 +4,6 @@ public class FileManager
 {
     public void CreateIfNotExists(string path)
     {
-        if (!Directory.Exists(path))
             Directory.CreateDirectory(path);
     }
 
